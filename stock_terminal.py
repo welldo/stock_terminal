@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf8 -*-
 # @Author: Devin-Kung
-# Project: Stock-Terminal
+# Project: https://github.com/Devin-Kung/stock_terminal
 
 import re
 import urwid
