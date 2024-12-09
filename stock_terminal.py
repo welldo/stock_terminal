@@ -319,7 +319,7 @@ def run():
     # 交易时间为非节假日的周一至周五 9:30-11:30  13:00-15:00
     now = datetime.now()
     time_str = now.strftime('%H:%M')
-    if not ((calendar.is_workday(now) and 1 <= now.isoweekday() <= 5) and ('09:30' <= time_str <= '11:30' or '13:00' <= time_str <= '15:00')):
+    if not ((calendar.is_workday(now) and 1 <= now.isoweekday() <= 5) and ('09:15' <= time_str <= '11:30' or '13:00' <= time_str <= '15:05')):
         auto_refresh = False
 
     urwid_alarm = main_loop.set_alarm_in(0, refresh)
