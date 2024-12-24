@@ -67,6 +67,7 @@ tickers = [
     '002526', # 山东矿机
     '600999', # 招商证券
     '600030', # 中信证券
+    '605337', # 李子园
 ]
 
 
@@ -623,16 +624,16 @@ def update_custom_monitor_data(old_data, new_data):
         if custom_monitor_triggered_data.get(ticker) is None:
             custom_monitor_triggered_data[ticker] = []
         
-        old_price = old_data[ticker][3]
-        new_price = new_data[ticker][3]
+        old_price = float(old_data[ticker][3])
+        new_price = float(new_data[ticker][3])
         old_fluctuation = (float(old_data[ticker][3]) - float(old_data[ticker][2])) / float(old_data[ticker][2]) * 100
         new_fluctuation = (float(new_data[ticker][3]) - float(new_data[ticker][2])) / float(new_data[ticker][2]) * 100
         
         # 如果价格监控触发
-        if data[0] is not None and (old_price < data[0] <= new_price or old_price > data[0] >= new_price):
+        if data[0] is not None and (old_price < float(data[0]) <= new_price or old_price > float(data[0]) >= new_price):
             send_notification('价格监控', f'{new_data[ticker][0]}({ticker}): {round(float(new_data[ticker][3]), 2)}')
         # 如果涨跌幅监控触发
-        if data[1] is not None and (old_fluctuation < data[1] <= new_fluctuation or old_fluctuation > data[1] >= new_fluctuation):
+        if data[1] is not None and (old_fluctuation < float(data[1]) <= new_fluctuation or old_fluctuation > float(data[1]) >= new_fluctuation):
             send_notification('涨跌幅监控', f'{new_data[ticker][0]}({ticker}): {round(new_fluctuation, 2)}%')
 
 
