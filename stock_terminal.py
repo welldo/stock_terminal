@@ -286,20 +286,20 @@ def get_update_table(need_update=True):
                 custom_monitor_fluctuation = str(custom_monitor_data[ticker][1]) + '%' if custom_monitor_data[ticker][1] is not None else ''
             
             table.add_row(
-                pre_text + data[0].strip() + ' ' + ticker,
-                str(data[2]),
-                str(data[1]),
-                str(data[3]),
-                ('+' if diff > 0 else '') + str(round(diff, 3)),
-                ('+' if float(data[3]) - float(data[2]) > 0 else '') + str(round(float(data[3]) - float(data[2]), 2)),
-                str(round((float(data[3]) - float(data[2])) / float(data[2]) * 100, 2)) + '%',
-                str(data[4]) + ' · ' + str(round((float(data[4]) - float(data[2])) / float(data[2]) * 100, 2)) + '%',
-                str(data[5]) + ' · ' + str(round((float(data[5]) - float(data[2])) / float(data[2]) * 100, 2)) + '%',
-                str(round(float(data[8]) / 100, 2)),
-                str(round(float(data[9]) / 10000, 2)),
-                str(data[31]),
-                custom_monitor_price,
-                custom_monitor_fluctuation,
+                pre_text + data[0].strip() + ' ' + ticker, # 股票名字
+                str(data[2]), # 昨收
+                str(data[1]), # 今开
+                str(data[3]), # 实时
+                ('+' if diff > 0 else '') + str(round(diff, 3)), # 波动
+                ('+' if float(data[3]) - float(data[2]) > 0 else '') + str(round(float(data[3]) - float(data[2]), 3)), # 涨跌
+                str(round((float(data[3]) - float(data[2])) / float(data[2]) * 100, 2)) + '%', # 涨跌幅
+                str(data[4]) + ' · ' + str(round((float(data[4]) - float(data[2])) / float(data[2]) * 100, 2)) + '%', # 今日最高
+                str(data[5]) + ' · ' + str(round((float(data[5]) - float(data[2])) / float(data[2]) * 100, 2)) + '%', # 今日最低
+                str(round(float(data[8]) / 100)), # 成交数(手)
+                str(round(float(data[9]) / 10000)), # 成交额(万)
+                str(data[31]), # 时间
+                custom_monitor_price, # 监控价格
+                custom_monitor_fluctuation, # 监控涨跌幅
                 style=Style(color=color, bgcolor=bg_color)
             )
 
